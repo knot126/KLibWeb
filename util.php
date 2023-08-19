@@ -38,14 +38,6 @@ function send_discord_message(string $message) {
 	post($webhook_url, json_encode($body));
 }
 
-function alert(string $title, string $url = "") {
-	/**
-	 * Add a notification to a user's inbox.
-	 */
-	
-	send_discord_message(date("Y-m-d H:i:s", time()) . " — " . $title . ($url ? "\n[Relevant link](https://smashhitlab.000webhostapp.com/$url)" : ""));
-}
-
 function get_ip_address() : string {
 	/**
 	 * Get the current IP address.
@@ -56,4 +48,18 @@ function get_ip_address() : string {
 
 function frand() : float {
 	return mt_rand() / mt_getrandmax();
+}
+
+function get_formatted_datetime(?int $time = null) : string {
+	return date("Y-m-d H:i:s", $time === null ? $time : time());
+}
+
+function copy_object_vars(object &$to, object $from) {
+	/**
+	 * Load everything from object $from into object $to
+	 */
+	
+	foreach (get_object_vars($from) as $key => $value) {
+		$to->$key = $value;
+	}
 }
