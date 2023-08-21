@@ -220,6 +220,14 @@ class Page {
 		}
 	}
 	
+	function heading(int $i, string $h) : void {
+		$this->add("<h$i>$h</h$i>");
+	}
+	
+	function para(string $h) : void {
+		$this->add("<p>$h</p>");
+	}
+	
 	private function render_json() : string {
 		assert($this->mode === PAGE_MODE_API);
 		

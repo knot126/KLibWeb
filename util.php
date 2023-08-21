@@ -51,7 +51,7 @@ function frand() : float {
 }
 
 function get_formatted_datetime(?int $time = null) : string {
-	return date("Y-m-d H:i:s", $time === null ? $time : time());
+	return date("Y-m-d H:i:s", $time === null ? time() : $time);
 }
 
 function copy_object_vars(object &$to, object $from) {
